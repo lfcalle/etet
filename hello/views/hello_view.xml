@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo> 
+<!-- Comentario en la Views --> 
+     <record id="view_ej_hello_form" model="ir.ui.view"> 
+        <field name="name">ej.hello.form</field> 
+        <field name="model">ej.hello</field> 
+        <field name="arch" type="xml"> 
+            <form string="Listado de Hello"> 
+                <group> 
+                    <field name="dato1"/> 
+                    <field name="dato2"/> 
+                </group> 
+            </form> 
+        </field> 
+    </record> 
+     <record id="view_tree_hello" model="ir.ui.view"> 
+        <field name="name">ej.hello.tree</field> 
+        <field name="model">ej.hello</field> 
+        <field name="arch" type="xml"> 
+           <tree> 
+                    <field name="dato1"/> 
+                    <field name="dato2"/> 
+           </tree> 
+        </field> 
+    </record> 
+    <record model="ir.actions.act_window" id="act_ej_hello"> 
+        <field name="name">hello</field> 
+        <field name="res_model">ej.hello</field> 
+        <field name="view_mode">tree,form</field> 
+        <field name="view_id"  ref="view_tree_hello" /> 
+    </record> 
+<!--  Declaramos los menu --> 
+<menuitem id="ej_hello_menu" name="Hello" web_icon="stock,static/description/icon.png" sequence="10"/> 
+<menuitem id="submenu_ej_hello_menu" name="Hello" sequence="10" parent="ej_hello_menu"/> 
+<menuitem id="submenu_ej_hello_action" name="Hello" sequence="10" parent="submenu_ej_hello_menu" action="act_ej_hello"/> 
+</odoo> 
